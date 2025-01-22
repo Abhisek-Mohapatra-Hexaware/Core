@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+    <div class="container">
+    <h1>This is Sent Email.</h1>
+        <a href="{% url 'send_email'  %}"><button class="btn btn-success">
+            Send Email
+        </button></a>
+    </div>
+
+    <h1>This is Index Page</h1>
+
+    <a href="/contact/">Contact Page</a>
+    <br>
+    <br>
+    <br>
+
+    <a href="http://127.0.0.1:8000/about/">About Page</a>
+
+
+    <table class="container mt-5">
+      <tr>
+        <th>S. No.</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Can Vote</th>
+      </tr>
+      {%for people in peoples%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{people.Name}}</td>
+        <td style="color:red;">{{people.Age}}</td>
+        <td {% if people.Age < 18 %} style="background:red;"  {%endif%} >
+          {% if people.Age >= 18 %}
+          👍
+          {%else%}
+          👎
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+<!--    <p>-->
+<!--      {{text|truncatechars:160 }}-->
+<!--    </p>-->
+
+    <p>
+      {% if "Cucumber" in vegetables %}
+        Yes Cucumber Available
+      {%elif "Potato" in vegetables %}
+        Potato Available But Cucumber Not Available
+      {% else %}
+        Cucumber Not Available
+      {% endif %}
+
+    </p>
+
+    <p>
+      {% for vegetable in vegetables %}
+        {% if forloop.first %}
+          The First Vegetable is: {{vegetable}}
+        {% endif %}
+      {% endfor %}
+    </p>
+    {% for people in peoples %}
+    <p>
+
+            {% if people.Age > 10 %}
+                Yes
+            {% else %}
+                No
+            {% endif %}
+    </p>
+    {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block start %}
+
+
+
+<form class="col-6 mx-auto p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>
+        Login
+    </h2>
+    <hr>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">UserName</label>
+    <input type="text" required class="form-control" name="username"  aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+  </div>
+    <p>Don't Have Account? <a href="/register/" >Register Here</a></p>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}
